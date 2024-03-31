@@ -2,12 +2,14 @@ from streamlit_webrtc import webrtc_streamer
 import av
 import cv2
 import tensorflow as tf
+from keras.layers import TFSMLayer
 import numpy as np
 import imutils
 import pickle
 import os
 
 model_path='liveness.model'
+liveness_model = TFSMLayer(model_path, call_endpoint='serving_default')
 le_path='label_encoder.pickle'
 encodings='encoded_faces.pickle'
 detector_folder='face_detector'
